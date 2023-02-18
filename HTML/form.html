@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+
+<body>
+  <form action="example.com/path" method="post">
+    <label for="first_name">First Name:</label>
+    <input type="text" id="first_name" placeholder="type here" name="first_name" />
+    <label for="user_email">Email Address:</label>
+    <input type="email" id="user_email" name="email" placeholder="you@example.com">
+    <label for="user_password">Password:</label>
+    <input type="password" id="user_password" name="password">
+    <label for="amount">Amount:</label>
+    <input type="number" id="amount" name="amount">
+    <label for="dob">Date of Birth:</label>
+    <input type="date" id="dob" name="dob">
+
+    <!-- </form> -->
+    <textarea name="" id="" cols="60" rows="20">Some initial content</textarea>
+    <select name="Car" id="">
+      <option value="mercedes">Mercedes</option>
+      <option value="tesla" selected>Tesla</option>
+      <option value="volvo">Volvo</option>
+      <option value="bmw">BMW</option>
+      <option value="mini">Mini</option>
+      <option value="ford">Ford</option>
+    </select>
+
+    <select name="fashion">
+      <optgroup label="Clothing">
+        <option value="t_shirt">T-Shirts</option>
+        <option value="sweater">Sweaters</option>
+        <option value="coats">Coats</option>
+      </optgroup>
+      <optgroup label="Foot Wear">
+        <option value="sneakers">Sneakers</option>
+        <option value="boots">Boots</option>
+        <option value="sandals">Sandals</option>
+      </optgroup>
+    </select>
+
+    <h1>Ticket Type</h1>
+    <div>
+      <input type="radio" id="child" name="ticket_type" value="child">
+      <label for="child">Child</label>
+    </div>
+
+    <div>
+      <input type="radio" id="adult" name="ticket_type" value="adult" checked>
+      <label for="adult">Adult</label>
+    </div>
+
+    <div>
+      <input type="radio" id="senior" name="ticket_type" value="senior">
+      <label for="senior">Senior</label>
+    </div>
+
+    <h1>Pizza Toppings</h1>
+
+    <div>
+      <input type="checkbox" id="sausage" name="topping" value="sausage">
+      <label for="sausage">Sausage</label>
+    </div>
+
+    <div>
+      <input type="checkbox" id="onions" name="topping" value="onions">
+      <label for="onions">Onions</label>
+    </div>
+
+    <div>
+      <input type="checkbox" id="pepperoni" name="topping" value="pepperoni">
+      <label for="pepperoni">Pepperoni</label>
+    </div>
+
+    <div>
+      <input type="checkbox" id="mushrooms" name="topping" value="mushrooms">
+      <label for="mushrooms">Mushrooms</label>
+    </div>
+
+    <div>
+      <input type="checkbox" id="newsletter" name="news_letter" checked>
+      <label for="newsletter">Send me the news letter</label>
+    </div>
+
+    <!-- Buttons -->
+
+    <button type="submit">Submit</button>
+    <button type="reset">Reset</button>
+    <button type="button">Click to Toggle</button>
+  </form>
+
+  <!-- Organizing Elements -->
+  <fieldset>
+    <label for="first_name">First Name</label>
+    <input type="text" id="first_name" name="first_name">
+
+    <label for="last_name">Last Name</label>
+    <input type="text" id="last_name" name="last_name">
+  </fieldset>
+
+
+  <fieldset>
+    <legend>Contact Details</legend>
+    <!-- legend elements always come directly after an opening fieldset tag -->
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name">
+
+    <label for="phone_number">Phone Number:</label>
+    <input type="tel" id="phone_number" name="phone_number">
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email">
+  </fieldset>
+
+  <fieldset>
+    <legend>Delivery Details</legend>
+
+    <label for="street_address">Street Address:</label>
+    <input type="text" id="street_address" name="street_address">
+
+    <label for="city">City:</label>
+    <input type="text" id="city" name="city">
+
+    <label for="zip_code">Zip Code:</label>
+    <input type="text" id="zip_code" name="zip_code">
+  </fieldset>
+
+  <!-- Grouping radio buttons and using legend to tell the user what it's for 
+ -->
+  <fieldset>
+    <legend>What would you like to drink?</legend>
+
+    <div>
+      <input type="radio" name="drink" id="coffee" value="coffee">
+      <label for="coffee">Coffee</label>
+    </div>
+
+    <div>
+      <input type="radio" name="drink" id="tea" value="tea">
+      <label for="tea">Tea</label>
+    </div>
+
+    <div>
+      <input type="radio" name="drink" id="soda" value="soda">
+      <label for="soda">Soda</label>
+    </div>
+  </fieldset>
+  <!-- Form Validation -->
+  <!-- required -->
+  <form action="#" method="get">
+    <div>
+      <label for="user_email">*Email:</label>
+      <input type="email" id="user_email" name="user_email" required>
+    </div>
+    <br>
+
+    <div>
+      <label for="user_password">*Password:</label>
+      <input type="password" id="user_password" name="user_password" required>
+    </div>
+
+    <button type="submit">Login</button>
+  </form>
+
+  <!-- Text Length Validations -->
+  <!-- minlength="number" -->
+  <form action="#" method="get">
+    <div>
+      <textarea placeholder="What's happening?" minlength="3"></textarea>
+    </div>
+
+    <button type="submit">Tweet</button>
+  </form>
+  <!-- maxlength="number" -->
+  <form action="#" method="get">
+    <div>
+      <textarea placeholder="What's happening?" maxlength="20"></textarea>
+    </div>
+
+    <button type="submit">Tweet</button>
+  </form>
+  <!-- Combining Validations -->
+  <form action="#" method="get">
+    <div>
+      <textarea placeholder="What's happening?" minlength="5" maxlength="20"></textarea>
+    </div>
+
+    <button type="submit">Tweet</button>
+  </form>
+
+  <!-- Number Range Validations -->
+  <!-- Min Validation -->
+  <form action="#" method="get">
+    <div>
+      <label for="quantity">Quantity</label>
+    </div>
+    <input type="number" id="quantity" name="quantity" min="1" value="0">
+
+    <div>
+      <button type="submit">Place Order</button>
+    </div>
+  </form>
+
+  <form action="#" method="get">
+    <div>
+      <label for="passengers">Passengers</label>
+    </div>
+    <input type="number" id="passengers" name="passengers" max="5" value="0">
+    <div>
+      <button type="submit">Book</button>
+    </div>
+  </form>
+
+  <!-- Pattern Validation -->
+  <form action="#" method="get">
+    <div>
+      <label for="zip_code">Postal / Zip Code:</label>
+    </div>
+    <input type="text" id="zip_code" name="zip_code" pattern="(\d{5}([\-]\d{4})?)"
+      title="Please enter a valid zip code, example:65251" placeholder="65251" required>
+
+    <div>
+      <button type="submit">Submit</button>
+    </div>
+  </form>
+  <!-- The pattern attribute can only be used on <input> elements.  -->
+  <!-- Some input elements already validate data that matches a certain pattern.  -->
+  <form action="#" method="get">
+    <div>
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email">
+    </div>
+
+
+    <div>
+      <label for="website">Website:</label>
+    </div>
+    <input type="url" id="website" name="website">
+    <div>
+      <button type="submit">Submit</button>
+    </div>
+  </form>
+
+  <!-- Styling Validations -->
+  <style>
+    input {
+      border: 2px solid #000;
+      margin-bottom: 15px;
+      padding: 5px;
+      border-radius: 5px;
+    }
+
+    input:invalid {
+      border-color: red;
+    }
+
+    input:valid {
+      border-color: green;
+    }
+  </style>
+</body>
+
+</html>
