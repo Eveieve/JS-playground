@@ -62,7 +62,3 @@ let userAccount = new Account ()
 
 //userAccount initialized with the Account () constructor and as such its prototype attribute (or prototype object) is Account.prototype. 
 
-//-----------------------------
-//Objects as a Design Pattern
-
-const playerOneName = "tim"
