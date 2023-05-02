@@ -1,26 +1,43 @@
-function C() {}
+array = [3, 2, 4, 0, 8, 10, 10, 1, 16, 13];
+const C = [];
 
-const c = new C();
+function merge(A, B) {
+  if (A && B) {
+    let m = A.length; // length of array A
+    let n = B.length;
 
-console.log(c instanceof C);
-
-console.log(c.constructor === C);
-
-//Change prototype
-C.prototype = { prototype_prop: "hello" };
-console.log(c.constructor === C);
-console.log(c instanceof C); //false !
-
-// c instanceOf C means 'at this moment, the prototype C will use if its' inovoked as a constructor'
-
-function MyObject(data) {
-  this.data = data;
+    let i = 0;
+    let k = 0;
+    let j = 0;
+    // console.log(A);
+    while (i <= m && k <= n) {
+      if (A[i] < B[k]) {
+        C[j++] = A[z++];
+      } else C[j++] = B[k++];
+      // return C;
+    }
+    for (i <= m; i++; ) C[j++] = A[i];
+    for (k <= n; k++; ) C[j++] = B[k];
+    // console.log(C);
+  }
+  return C;
+}
+// h is the length
+function mergeSort(l, h, array) {
+  const slicedArray = array.slice(l, h);
+  console.log(slicedArray);
+  if (slicedArray.length === 0) return slicedArray;
+  else if (slicedArray.length > 1) {
+    const mid = (l + h) / 2;
+    const leftArray = mergeSort(l, mid, slicedArray);
+    // console.log(leftArray);
+    const rightArray = mergeSort(mid, h, slicedArray);
+    return merge(leftArray, rightArray);
+    // return the merged array
+  }
+  // return slicedArray;
 }
 
-MyObject.prototype = {
-  getData: function () {
-    return this.data;
-  },
-};
+console.log(mergeSort(0, 10, array));
 
-let o = new MyObject("data");
+// i was not storing !!!!!!!!
