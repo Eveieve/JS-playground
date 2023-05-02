@@ -11,11 +11,11 @@ function merge(A, B) {
   let i = 0;
   console.log(A);
   console.log(B);
-  while (i <= m && j <= n) {
+  while (i <= m || j <= n) {
     if (A[i] < B[j]) {
       C[k++] = A[i++];
       console.log(C);
-    } else {
+    } else if (B[j] < A[i]) {
       C[k++] = B[j++];
       console.log(C);
     }
