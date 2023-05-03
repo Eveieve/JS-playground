@@ -1,4 +1,6 @@
-array = [4, 2, 0];
+array = [4, 2, 0, 45, 89, 12, 1, 43, 9, 13, 8, 6, -3, 5, 17, 21];
+// array = [-3, 0, -5, -10, -45, -13, 13];
+// array = [2, 4, 7, 4, 5, 6, 6, -7]; // duplicate values
 // merge sorted arrays.
 
 // A and B are sorted in order.
@@ -13,15 +15,13 @@ function merge(A, B) {
   console.log("B", B);
 
   while (k < m + n) {
-    if (A[i] < B[j] || B[j] === undefined) {
+    if (A[i] <= B[j] || B[j] === undefined) {
       C[k++] = A[i++];
-      console.log("ongoing C", C);
-    } else if (B[j] < A[i] || A[i] === undefined) {
+      console.log("ongoing1", C);
+    } else if (B[j] <= A[i] || A[i] === undefined) {
       C[k++] = B[j++];
       console.log("ongoing2", C);
     }
-    // for (i < m; i++; ) C[k++] = A[i];
-    // for (j < n; j++; ) C[k++] = B[j];
   }
   console.log("C", C);
   return C; // return after copying all values.
@@ -48,5 +48,3 @@ function mergeSort(array) {
 }
 
 console.log(mergeSort(array));
-
-// i was not storing !!!!!!!!
