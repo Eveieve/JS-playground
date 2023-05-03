@@ -6,9 +6,9 @@ let C = [];
 function merge(A, B) {
   let m = A.length; // length of array A
   let n = B.length;
-  let k = 0;
-  let j = 0;
   let i = 0;
+  let j = 0;
+  let k = 0;
   console.log("A", A);
   console.log("B", B);
   while (i <= m && j <= n) {
@@ -19,6 +19,8 @@ function merge(A, B) {
       C[k++] = B[j++];
       console.log("ongoing2", C);
     }
+    // for (i <= m; i++; ) C[k++] = A[i];
+    // for (j <= n; j++; ) C[k++] = B[j];
   }
   console.log("C", C);
   return C; // return after copying all values.
