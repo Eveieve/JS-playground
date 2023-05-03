@@ -1,4 +1,4 @@
-array = [3, 2, 4, 0, 7, 5, 23, 12, 56, 11, 27, 68, 34, 53];
+array = [4, 2, 0];
 // merge sorted arrays.
 let C = [];
 
@@ -9,17 +9,18 @@ function merge(A, B) {
   let k = 0;
   let j = 0;
   let i = 0;
-  console.log(A);
-  console.log(B);
-  while (i <= m || j <= n) {
+  console.log("A", A);
+  console.log("B", B);
+  while (i <= m && j <= n) {
     if (A[i] < B[j]) {
       C[k++] = A[i++];
-      console.log(C);
-    } else if (B[j] < A[i]) {
+      console.log("ongoing C", C);
+    } else {
       C[k++] = B[j++];
-      console.log(C);
+      console.log("ongoing2", C);
     }
   }
+  console.log("C", C);
   return C; // return after copying all values.
 }
 
@@ -31,14 +32,14 @@ function mergeSort(array) {
     const mid = Math.ceil((l + h) / 2);
     const leftArray = array.slice(l, mid);
     const rightArray = array.slice(mid, h);
-    console.log(leftArray);
-    console.log(rightArray);
+    console.log("leftArray", leftArray);
+    console.log("rightArray", rightArray);
     const sortedLeft = mergeSort(leftArray);
-    console.log(sortedLeft);
+    console.log("sortedLeft", sortedLeft);
     const sortedRight = mergeSort(rightArray);
-    console.log(sortedRight);
+    console.log("sortedRight", sortedRight);
     const mergedArray = merge(sortedLeft, sortedRight);
-    // console.log(mergedArray);
+    console.log("mergedArray", mergedArray);
     return mergedArray;
   }
 }
