@@ -1,9 +1,9 @@
 array = [4, 2, 0];
 // merge sorted arrays.
-let C = [];
 
 // A and B are sorted in order.
 function merge(A, B) {
+  let C = [];
   let m = A.length; // length of array A
   let n = B.length;
   let i = 0;
@@ -11,16 +11,17 @@ function merge(A, B) {
   let k = 0;
   console.log("A", A);
   console.log("B", B);
-  while (i <= m && j <= n) {
-    if (A[i] < B[j]) {
+
+  while (k < m + n) {
+    if (A[i] < B[j] || B[j] === undefined) {
       C[k++] = A[i++];
       console.log("ongoing C", C);
-    } else {
+    } else if (B[j] < A[i] || A[i] === undefined) {
       C[k++] = B[j++];
       console.log("ongoing2", C);
     }
-    // for (i <= m; i++; ) C[k++] = A[i];
-    // for (j <= n; j++; ) C[k++] = B[j];
+    // for (i < m; i++; ) C[k++] = A[i];
+    // for (j < n; j++; ) C[k++] = B[j];
   }
   console.log("C", C);
   return C; // return after copying all values.
