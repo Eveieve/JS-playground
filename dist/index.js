@@ -1,50 +1,52 @@
-array = [4, 2, 0, 45, 89, 12, 1, 43, 9, 13, 8, 6, -3, 5, 17, 21];
-// array = [-3, 0, -5, -10, -45, -13, 13];
-// array = [2, 4, 7, 4, 5, 6, 6, -7]; // duplicate values
-// merge sorted arrays.
+const proto = {
+  breed: "puddle", // remember? object literal syn tax is :
+  bark() {
+    console.log("woof woof");
+    return "woof returned"; // then it's not undefined
+  },
+};
+// this is a factory using the above object literal!
+const factoryDog = () => Object.create(proto);
 
-// A and B are sorted in order.
-function merge(A, B) {
-  let C = [];
-  let m = A.length; // length of array A
-  let n = B.length;
-  let i = 0;
-  let j = 0;
-  let k = 0;
-  console.log("A", A);
-  console.log("B", B);
+// create an factoryDog object with this object literal!
+const dog1 = factoryDog();
+console.log(dog1);
+dog1.c = "ddubi"; // set a new variable
+console.log(dog1); // not an object with c property's value 'ddubi'
+console.log(dog1.c);
+console.log(dog1.bark()); // dog1 is an object(instance) created with factoryDog.
+// dog1 object has a method in it!
+console.log(dog1.breed);
+dog1.breed = "not puddle"; //reset the breed variable
+console.log(dog1);
+console.log(dog1.breed); // breed is not puddle
 
-  while (k < m + n) {
-    if (A[i] <= B[j] || B[j] === undefined) {
-      C[k++] = A[i++];
-      console.log("ongoing1", C);
-    } else if (B[j] <= A[i] || A[i] === undefined) {
-      C[k++] = B[j++];
-      console.log("ongoing2", C);
-    }
-  }
-  console.log("C", C);
-  return C; // return after copying all values.
-}
+const rocketShipFactory = (c) => {
+  const color = c; // variable 'color' is c, which will be passed when called.
+  const name = "zey";
+  const useName = () => console.log`logging ${name} what is this`;
+  return {
+    useName,
+    fly() {
+      // both syntax for methods - are fine.
+      console.log(`The ${color} rocketship has launched`);
+    },
+    land: () => console.log(`The ${color} rocketship has landed`),
+    color,
+  };
+};
 
-function mergeSort(array) {
-  l = 0;
-  h = array.length;
-  if (array.length <= 1) return array;
-  else if (array.length > 1) {
-    const mid = Math.ceil((l + h) / 2);
-    const leftArray = array.slice(l, mid);
-    const rightArray = array.slice(mid, h);
-    console.log("leftArray", leftArray);
-    console.log("rightArray", rightArray);
-    const sortedLeft = mergeSort(leftArray);
-    console.log("sortedLeft", sortedLeft);
-    const sortedRight = mergeSort(rightArray);
-    console.log("sortedRight", sortedRight);
-    const mergedArray = merge(sortedLeft, sortedRight);
-    console.log("mergedArray", mergedArray);
-    return mergedArray;
-  }
-}
+const r2 = rocketShipFactory("pink");
+console.log(r2);
+console.log(r2.fly());
+console.log(r2.color); // 'pink'
+console.log(r2); // is an instance made with factory , with 'pink' argument
 
-console.log(mergeSort(array));
+// r2.name = "changed!";
+// console.log(r2); // name is now 'changed!''
+// console.log(r2.name);
+console.log(r2.name); // name is not accessible bc not defined!
+console.log(r2);
+
+console.log(r2.useName); // literally prints out the function
+console.log(r2.useName());
