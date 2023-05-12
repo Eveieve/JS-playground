@@ -1,52 +1,81 @@
-const proto = {
-  breed: "puddle", // remember? object literal syn tax is :
-  bark() {
-    console.log("woof woof");
-    return "woof returned"; // then it's not undefined
-  },
-};
-// this is a factory using the above object literal!
-const factoryDog = () => Object.create(proto);
+// setup and teardown
 
-// create an factoryDog object with this object literal!
-const dog1 = factoryDog();
-console.log(dog1);
-dog1.c = "ddubi"; // set a new variable
-console.log(dog1); // not an object with c property's value 'ddubi'
-console.log(dog1.c);
-console.log(dog1.bark()); // dog1 is an object(instance) created with factoryDog.
-// dog1 object has a method in it!
-console.log(dog1.breed);
-dog1.breed = "not puddle"; //reset the breed variable
-console.log(dog1);
-console.log(dog1.breed); // breed is not puddle
+beforeEach(() => {
+  initializeCityDatabase();
+});
 
-const rocketShipFactory = (c) => {
-  const color = c; // variable 'color' is c, which will be passed when called.
-  const name = "zey";
-  const useName = () => console.log`logging ${name} what is this`;
-  return {
-    useName,
-    fly() {
-      // both syntax for methods - are fine.
-      console.log(`The ${color} rocketship has launched`);
-    },
-    land: () => console.log(`The ${color} rocketship has landed`),
-    color,
-  };
-};
+afterEach(() => {
+  clearCityDatabase();
+});
 
-const r2 = rocketShipFactory("pink");
-console.log(r2);
-console.log(r2.fly());
-console.log(r2.color); // 'pink'
-console.log(r2); // is an instance made with factory , with 'pink' argument
+test("city database has Vienna", () => {
+  expect(isCity("Vienna")).toBeTruthy();
+});
 
-// r2.name = "changed!";
-// console.log(r2); // name is now 'changed!''
-// console.log(r2.name);
-console.log(r2.name); // name is not accessible bc not defined!
-console.log(r2);
+test("city database has San Juan", () => {
+  expect(isCity("San Juan")).toBeTruthy();
+});
 
-console.log(r2.useName); // literally prints out the function
-console.log(r2.useName());
+beforeEach(() => {
+  return initializeCityDatabase();
+});
+
+// one-time setup
+
+beforeAll(() => {
+  return initializedCityDatabase(); // if initializeCityDatabase returned promises..
+});
+
+afterAll(() => {
+  return clearCityDatabase();
+});
+
+test("city database has Vienna", () => {
+  expect(isCity("Vienna")).toBeTruthy();
+});
+
+// Scoping
+
+beforeAll(() => console.log("1 - beforeAll"));
+afterAll(() => console.log("1 - afterAll"));
+beforeEach(() => console.log("1 - beforeEach"));
+afterEach(() => console.log("1 - afterEach"));
+
+test("", () => console.log("1 - test"));
+
+describe("Scoped / Nested block", () => {
+  beforeAll(() => console.log("2 - beforeAll"));
+  afterAll(() => console.log("2 - afterAll"));
+  beforeEach(() => console.log("2 - beforeEach"));
+  afterEach(() => console.log("2 - afterEach"));
+
+  test("", () => console.log("2 - test"));
+});
+
+// 1 - beforeAll
+// 1 - beforeEach
+// 1 - test
+// 1 - afterEach
+// 2 - beforeAll
+// 1 - beforeEach
+// 2 - beforeEach
+// 2 - test
+// 2 - afterEach
+// 1 - afterEach
+// 2 - afterAll
+// 1 - afterAll
+
+// ----------
+// Order of Execution
+
+describe("describe outer", () => {
+  console.log("describe outer-a");
+
+  describe("describe inner 1", () => {
+    console.log("describe inner 1");
+
+    test("test 1", () => {
+      console.log("test 1");
+    });
+  });
+});
