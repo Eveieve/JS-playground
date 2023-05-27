@@ -1,19 +1,10 @@
-var x = 1;
-a();
-b();
-// can invoke before initialization
-console.log(x);
-
-function a() {
-  var x = 10;
-  console.log(x);
-}
+var a = 10;
 
 function b() {
-  var x = 100;
-  console.log(x);
+  var x = 10;
 }
+console.log(window.a);
 
-// 10
-// 100
-// 1
+console.log(a); // assumes it's in the global space.
+console.log(this.a);
+// console(x); // error
