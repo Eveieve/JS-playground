@@ -1,47 +1,19 @@
-function Ship(length) {
-  let hit = 0;
-  const getHit = () => {
-    hit += 1;
-  };
+var x = 1;
+a();
+b();
+// can invoke before initialization
+console.log(x);
 
-  const isSunk = () => {
-    if (hit === length) return true;
-    return false;
-  };
-  return { getHit, isSunk };
+function a() {
+  var x = 10;
+  console.log(x);
 }
 
-function Gameboard() {
-  const board = () => {
-    const col = 10;
-    const row = 10;
-    const arr = [];
-
-    for (let i = 0; i < row; i++) {
-      arr[i] = [];
-      for (let j = 0; j < col; j++) {
-        arr[i][j] = 0;
-      }
-    }
-    return arr;
-  };
-  const arr = board(); // board array
-  const getArr = () => arr;
-  const placeShip = (x, y, length) => {
-    // const board = board();
-    if (arr[x][y] === 0) {
-      let i = 0;
-      while (i < length) {
-        arr[x][y - i] = 1; // horizontal
-        i++;
-      }
-    }
-    // return arr;
-  };
-  return { board, placeShip, getArr };
+function b() {
+  var x = 100;
+  console.log(x);
 }
 
-const gameboard = Gameboard();
-console.log(gameboard.placeShip(3, 4, 3));
-// console.log(gameboard.board());
-console.log(gameboard.getArr());
+// 10
+// 100
+// 1
